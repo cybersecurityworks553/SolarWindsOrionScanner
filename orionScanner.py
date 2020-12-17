@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-t","--target", help="Single IP",type=str)
 parser.add_argument("-T","--targets", help="List of IP in text file",type=str)
 parser.add_argument("-c","--cidr", help="CIDR range",type=str)
+parser.add_argument('-a',"--add", help="Addition ports to check for. example: -a 8889,9991",type=str)
 args = parser.parse_args()
 if len(sys.argv) < 2:
     parser.print_help()
@@ -19,8 +20,12 @@ if len(sys.argv) < 2:
 
 def orionNmap(ip):
     nmap = nmap3.NmapHostDiscovery()
-    print("Checking default web ports for {0}!".format(ip))
-    result=nmap.nmap_portscan_only("{0} -p 443,80,8443,8080 -n -sS".format(ip))
+    if args.add:
+        print("Checking default web ports and additional ports {1} for {0}!".format(ip,args.add)) 
+        result=nmap.nmap_portscan_only("{0} -p 443,80,8443,8080,{1} -n -sS".format(ip,args.add))
+    else:
+        print("Checking default web ports for {0}!".format(ip))    
+        result=nmap.nmap_portscan_only("{0} -p 443,80,8443,8080 -n -sS".format(ip))
     ip_r=list(result.keys())
     port=list()
     if ip_r[0] == 'runtime':
@@ -75,5 +80,3 @@ if __name__=="__main__":
             print("{:>25}{:>25}".format(i,info[i]))
     else:
         print("No web application was detected")
-            
-    
