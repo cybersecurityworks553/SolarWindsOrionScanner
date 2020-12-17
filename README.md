@@ -20,6 +20,7 @@ optional arguments:
   -c CIDR, --cidr CIDR  CIDR range
   -a ADD, --add ADD     Addition ports to check for. example: -a 8889,9991
 ```
+***Note:*** Default web ports are 80, 8080, 443, 8443
 
 ## Example: 1
 Run the script for single IP to detect SolarWinds Orion Products
@@ -40,7 +41,7 @@ python3 orionScanner.py -c 192.168.0.1/24
 ```
 
 ## Example: 4
-Run the script for single ip and additional ports
+Run the script for single ip and additional ports to detect SolarWinds Orion Products
 ```
 python3 orionScanner.py -t 192.168.0.1 -a 8889
 ```
