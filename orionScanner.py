@@ -17,6 +17,16 @@ args = parser.parse_args()
 if len(sys.argv) < 2:
     parser.print_help()
     sys.exit(1)
+    
+def fileload(filename):
+    # This get input from text file and converts to list
+    f= open(filename, "r")
+    content=f.read()
+    f.close()
+    content=content.split("\n")
+    while("" in content):
+        content.remove("")
+    return content
 
 def orionNmap(ip):
     nmap = nmap3.NmapHostDiscovery()
