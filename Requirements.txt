@@ -1,5 +1,5 @@
 argparse
 ipaddress
-python3-nmap
+python3-nmap==1.4.8
 favicon
 mmh3
