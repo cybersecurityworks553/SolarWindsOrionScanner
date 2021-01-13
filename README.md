@@ -3,7 +3,7 @@ Scanner to detect the SolarWinds Orion Products on the IP addresses
 
 ## Prerequisite's
 - python3
-- python3 -m pip install Requirements.txt
+- python3 -m pip install -r Requirements.txt
 
 ## Usage
 python3 orionScanner.py --help
